@@ -29,8 +29,7 @@ export default function Solution() {
     const findSolution = (item) => {
         if (created[item]) return true;
 
-        const itemData = data[item];  
-        console.log({item, itemData});      
+        const itemData = data[item];   
         if (!itemData || !itemData.madeWidth || !findSolution(itemData.madeWidth[0]) || !findSolution(itemData.madeWidth[1])) return false;
 
         result.push({
