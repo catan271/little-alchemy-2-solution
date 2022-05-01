@@ -4,15 +4,13 @@ import Solution from "./components/Solution";
 
 export default function App() {
     return <>
-        <Tabs>
-            <Tabs defaultActiveKey="1">
-                <Tabs.TabPane tab="Find solution" key="1">
-                    <Solution/>
-                </Tabs.TabPane>
-                <Tabs.TabPane tab="All formula" key="2">
-                    <Formula/>
-                </Tabs.TabPane> 
-            </Tabs>
+        <Tabs defaultActiveKey="1">
+            <Tabs.TabPane tab="Find solution" key="1">
+                <Solution/>
+            </Tabs.TabPane>
+            <Tabs.TabPane tab="All formula" key="2">
+                <Formula/>
+            </Tabs.TabPane> 
         </Tabs>
     </>
 }
