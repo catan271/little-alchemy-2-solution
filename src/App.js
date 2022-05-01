@@ -1,25 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import { Tabs } from "antd";
+import Formula from "./components/Formula";
+import Solution from "./components/Solution";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default function App() {
+    return <>
+        <Tabs>
+            <Tabs defaultActiveKey="1">
+                <Tabs.TabPane tab="Find solution" key="1">
+                    <Solution/>
+                </Tabs.TabPane>
+                <Tabs.TabPane tab="All formula" key="2">
+                    <Formula/>
+                </Tabs.TabPane> 
+            </Tabs>
+        </Tabs>
+    </>
 }
-
-export default App;
