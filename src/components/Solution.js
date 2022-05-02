@@ -1,17 +1,17 @@
 import { Alert, Button, Col, Form, Input, Row, Table } from "antd"
 import { useState } from "react";
-import data from '../data.json';
+import data from '../data/data.json';
 
 const render = (text) => <>
     <img src={`https://littlealchemy2.com/static/icons/${data[text].id}.svg`} style={{ maxWidth: 64 }} alt='text'/>
     <div>{ text }</div>
-</>
+</>;
 
 const columns = [
     { title: 'Source', width: '33%', align: 'center', dataIndex: 'source', render },
     { title: 'Target', width: '33%', align: 'center', dataIndex: 'target', render },
     { title: 'Product', width: '33%', align: 'center', dataIndex: 'product', render },
-]
+];
 
 export default function Solution() {
     const [form] = Form.useForm();
@@ -40,16 +40,16 @@ export default function Solution() {
         created[item] = true;
 
         return true;
-    }
+    };
 
     const handleSubmit = (e) => {
         setError(undefined);
         setTableData(undefined);
 
-        const item = form.getFieldValue('item');
+        const item = form.getFieldValue('item').toLowerCase();
         if (findSolution(item)) setTableData(result);
         else setError('No solution found!');
-    }
+    };
 
     return (
         <>
@@ -63,7 +63,7 @@ export default function Solution() {
                                 message: 'Please type the item you want!'
                             }]}
                         >
-                            <Input/>
+                            <Input autoComplete="off"/>
                         </Form.Item>
                     </Col>
                     <Col span={8} md={{ span: 6 }}>
