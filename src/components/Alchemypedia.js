@@ -4,8 +4,6 @@ import { Button, Col, Form, Input, Row, Table } from 'antd';
 import { PlusOutlined, ArrowLeftOutlined } from '@ant-design/icons'
 import { useRef, useState } from 'react';
 
-const filters = alchemypedia.map((each) => { return { text: each.name, value: each.name } });
-
 export default function Alchemypedia() {
     const [form] = Form.useForm();
     const [value, setValue] = useState();
@@ -35,22 +33,22 @@ export default function Alchemypedia() {
     }
 
     const renderItem = (name) => <>
-        <img className="button" src={`https://littlealchemy2.com/static/icons/${data[name].id}.svg`} style={{ maxWidth: 64 }} alt='text' />
+        <img className="button" src={`https://littlealchemy2.com/static/icons/${data[name]}.svg`} style={{ maxWidth: 64 }} alt='text' />
         <div>{name}</div>
     </>;
 
 
     const renderRecipe = (recipes) => <>
         {recipes.map((recipe, index) => <div key={index} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 4 }}>
-            <img className="button" onClick={() => pushItem(recipe[0])} src={`https://littlealchemy2.com/static/icons/${data[recipe[0]].id}.svg`} style={{ maxWidth: 32 }} alt={recipe[0]} title={recipe[0]} />
+            <img className="button" onClick={() => pushItem(recipe[0])} src={`https://littlealchemy2.com/static/icons/${data[recipe[0]]}.svg`} style={{ maxWidth: 32 }} alt={recipe[0]} title={recipe[0]} />
             <PlusOutlined />
-            <img className="button" onClick={() => pushItem(recipe[1])} src={`https://littlealchemy2.com/static/icons/${data[recipe[1]].id}.svg`} style={{ maxWidth: 32 }} alt={recipe[1]} title={recipe[1]} />
+            <img className="button" onClick={() => pushItem(recipe[1])} src={`https://littlealchemy2.com/static/icons/${data[recipe[1]]}.svg`} style={{ maxWidth: 32 }} alt={recipe[1]} title={recipe[1]} />
         </div>)}
     </>;
 
     const renderProduct = (products) => <>
         {products.map((product, index) => (
-            <img onClick={() => pushItem(product)} key={index} src={`https://littlealchemy2.com/static/icons/${data[product].id}.svg`} style={{ maxWidth: 32 }} alt={product} title={product} />
+            <img onClick={() => pushItem(product)} key={index} src={`https://littlealchemy2.com/static/icons/${data[product]}.svg`} style={{ maxWidth: 32 }} alt={product} title={product} />
         ))}
     </>;
 
@@ -59,7 +57,6 @@ export default function Alchemypedia() {
             title: 'Item',
             dataIndex: 'name',
             align: 'center',
-            filters,
             filteredValue: value? [value] : null,
             onFilter: (value, record) => record.name.startsWith(value),
             render: renderItem

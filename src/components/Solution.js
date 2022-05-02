@@ -1,9 +1,10 @@
 import { Alert, Button, Col, Form, Input, Row, Table } from "antd"
 import { useState } from "react";
 import data from '../data/data.json';
+import solution from '../data/solution.json'
 
 const render = (text) => <>
-    <img src={`https://littlealchemy2.com/static/icons/${data[text].id}.svg`} style={{ maxWidth: 64 }} alt='text'/>
+    <img src={`https://littlealchemy2.com/static/icons/${data[text]}.svg`} style={{ maxWidth: 64 }} alt='text'/>
     <div>{ text }</div>
 </>;
 
@@ -28,13 +29,12 @@ export default function Solution() {
 
     const findSolution = (item) => {
         if (created[item]) return true;
-
-        const itemData = data[item];   
-        if (!itemData || !itemData.madeWidth || !findSolution(itemData.madeWidth[0]) || !findSolution(itemData.madeWidth[1])) return false;
+   
+        if (!solution[item] || !findSolution(solution[item][0]) || !findSolution(solution[item][1])) return false;
 
         result.push({
-            source: itemData.madeWidth[0],
-            target: itemData.madeWidth[1],
+            source: solution[item][0],
+            target: solution[item][1],
             product: item
         })
         created[item] = true;
